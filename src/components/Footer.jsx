@@ -8,10 +8,10 @@ const Footer = () => {
         {/* Left - Logo + Copyright */}
         <div className="text-center md:text-left">
           <h1 className="text-white font-bold text-2xl tracking-wide">
-            CKTARUN<span className="text-[#ff6600]">.</span>
+            TASIN<span className="text-[#ff6600]">.</span>
           </h1>
           <p className="text-sm mt-2">
-            © {new Date().getFullYear()} CKTARUN. All rights reserved.
+            © {new Date().getFullYear()} TASIN. All rights reserved.
           </p>
         </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
         {/* Right - Social Icons */}
         <div className="flex gap-4">
           <a
-            href="https://github.com/cktarun"
+            href="https://github.com/Rayan37307"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full border border-gray-700 hover:border-[#ff6600] hover:text-[#ff6600] transition"
@@ -42,7 +42,7 @@ const Footer = () => {
             <FaGithub size={18} />
           </a>
           <a
-            href="https://www.linkedin.com/in/cktarun/"
+            href="https://www.linkedin.com/in/tasin-bin-tarek-417980386/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full border border-gray-700 hover:border-[#ff6600] hover:text-[#ff6600] transition"
@@ -50,7 +50,7 @@ const Footer = () => {
             <FaLinkedin size={18} />
           </a>
           <a
-            href="https://x.com/ck_tarun06"
+            href="https://x.com/tasinbintareq"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full border border-gray-700 hover:border-[#ff6600] hover:text-[#ff6600] transition"
@@ -58,7 +58,7 @@ const Footer = () => {
             <FaTwitter size={18} />
           </a>
           <a
-            href="mailto:tarunchinnapagak@gmail.com"
+            href="mailto:tasinbintareq@gmail.com"
             className="p-3 rounded-full border border-gray-700 hover:border-[#ff6600] hover:text-[#ff6600] transition"
           >
             <FaEnvelope size={18} />

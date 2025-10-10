@@ -70,19 +70,19 @@ const Contact = () => {
           <div className="flex flex-col gap-4 w-full sm:w-80 mx-auto">
             {/* Email Me */}
             <a
-              href="mailto:tarunchinnapagak@gmail.com"
+              href="mailto:tasinbintareq@gmail.com"
               className="w-full py-2 rounded-full bg-[#ddff00] text-black font-semibold hover:text-white"
             >
-              tarunchinnapagak@gmail.com
+              tasinbintareq@gmail.com
             </a>
 
             {/* Schedule a Call */}
-            <button
+            {/* <button
               onClick={() => setShowCalendly(true)}
               className="w-full py-2 px-20 rounded-full border border-gray-600 bg-[#0d0d0d] hover:bg-gray-600 text-white font-semibold"
             >
               📅 Schedule a Call
-            </button>
+            </button> */}
           </div>
         </div>
 

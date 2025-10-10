@@ -197,22 +197,14 @@ const Projects = () => {
                 </div>
 
                 {/* Buttons */}
-                <div className="mt-4 flex gap-3">
+                <div className="mt-4">
                   <a 
                     href={project.live} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex-1 text-center border border-gray-500 hover:bg-green-500 hover:text-black text-green-400 text-sm font-medium py-2 rounded-lg transition-colors"
+                    className="w-full text-center border border-gray-500 hover:bg-green-500 hover:text-black text-green-400 text-sm font-medium py-2 rounded-lg transition-colors block"
                   >
                     Live Preview
-                  </a>
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center bg-gray-700 hover:bg-gray-600 text-white text-sm font-medium py-2 rounded-lg transition-colors"
-                  >
-                    GitHub
                   </a>
                 </div>
               </div>
