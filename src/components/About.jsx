@@ -63,13 +63,13 @@ const About = () => {
           </p>
 
           {/* Download Resume Button */}
-          <a
+          {/* <a
             href="/files/tarunck-resume.pdf" // <-- Place your resume in /public/files/
             download
             className="inline-block mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300"
           >
             📄 Download Resume
-          </a>
+          </a> */}
         </div>
 
         {/* Image Section */}
