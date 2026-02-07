@@ -3,8 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // React Icons for skills
-import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJava, FaFigma } from "react-icons/fa";
-import { SiJavascript, SiTailwindcss, SiMysql, SiCanva, SiMongodb, SiGreensock } from "react-icons/si";
+import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJava, FaFigma, FaWordpress } from "react-icons/fa";
+import { SiJavascript, SiTailwindcss, SiMysql, SiCanva, SiMongodb, SiGreensock, SiPython, SiFramer, SiShopify, SiNextdotjs, SiPostgresql } from "react-icons/si";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +21,12 @@ const skillsData = [
   { name: "MySQL", icon: <SiMysql className="text-blue-400" /> },
   { name: "Figma", icon: <FaFigma className="text-pink-500" /> },
   { name: "Canva", icon: <SiCanva className="text-blue-300" /> },
+  { name: "Python", icon: <SiPython className="text-blue-500" /> },
+  { name: "Framer", icon: <SiFramer className="text-purple-600" /> },
+  { name: "Shopify", icon: <SiShopify className="text-green-600" /> },
+  { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
+  { name: "WordPress", icon: <FaWordpress className="text-blue-400" /> },
+  { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600" /> },
 ];
 
 const Skills = () => {
