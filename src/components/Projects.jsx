@@ -5,14 +5,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  {
-    title: "Imaginify: AI-Powered SaaS Platform (Monetized)",
-    description: "Engineered a full-stack, AI-driven image manipulation SaaS with robust user authentication, credit-based monetization, and advanced generative AI integrations. Demonstrates expertise in scalable SaaS architecture and AI product development.",
-    tech: ["Next.js", "Cloudinary AI", "Clerk Auth", "MongoDB"],
-    live: "https://imaginify.vercel.app",
-    badge: "AI Product",
-    image: "/images/flash.png"
-  },
+  // {
+  //   title: "Imaginify: AI-Powered SaaS Platform (Monetized)",
+  //   description: "Engineered a full-stack, AI-driven image manipulation SaaS with robust user authentication, credit-based monetization, and advanced generative AI integrations. Demonstrates expertise in scalable SaaS architecture and AI product development.",
+  //   tech: ["Next.js", "Cloudinary AI", "Clerk Auth", "MongoDB"],
+  //   live: "https://imaginify.vercel.app",
+  //   badge: "AI Product",
+  //   image: "/images/flash.png"
+  // },
   {
     title: "WishCare BD: High-Traffic E-commerce (Production-Ready)",
     description: "Developed and optimized WishCare Bangladesh's official e-commerce platform, handling significant traffic and secure transactions. Showcases proficiency in performance tuning, conversion-focused UI/UX, and scalable commercial architecture.",
