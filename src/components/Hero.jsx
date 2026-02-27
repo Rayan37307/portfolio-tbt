@@ -15,10 +15,10 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const marqueeItems = [
-    "🚀 Web Development",
-    "💡 UI/UX Design",
-    "⚡ Full Stack Projects",
-    "🎨 Creative Coding",
+    "🚀 Software Development",
+    "💡 System Architecture",
+    "⚡ Software Projects",
+    "🎨 UI/UX Design",
     "🛠 Problem Solving",
   ];
 

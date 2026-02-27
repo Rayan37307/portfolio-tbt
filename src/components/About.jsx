@@ -51,12 +51,14 @@ const About = () => {
             <span className="text-blue-500 font-bold">Tasin Bin Tareq</span>
           </h2>
           <h2 className="text-xl sm:text-2xl md:text-2xl font-semibold leading-snug">
-            I’m your <span className="text-white font-bold">Full Stack Developer</span>
+            I’m your <span className="text-white font-bold">Software Developer</span>
           </h2>
           <p className="text-gray-400 mt-3 text-sm sm:text-base leading-relaxed">
-            From designing beautiful interfaces to making sure everything runs smoothly behind the scenes,
-            I’ve got you covered. Let’s turn your ideas into interactive wonders that make waves online.
-            With me by your side, your website will be more than just pixels.
+            From architecting robust system logic to crafting intuitive user experiences, 
+            I specialize in building scalable software solutions. Let’s turn your complex 
+            challenges into high-performance applications that make a real impact. 
+            With a focus on clean code and efficient architecture, I bring your 
+            technical visions to life across multiple platforms.
           </p>
           <p className="text-[#ff6600] mt-6 font-semibold font-mono tracking-wide text-sm sm:text-base">
             {'{ Beyond your Imaginations }'}
