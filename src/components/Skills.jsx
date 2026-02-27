@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // React Icons for skills
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaJava, FaFigma, FaWordpress } from "react-icons/fa";
-import { SiJavascript, SiTailwindcss, SiMysql, SiCanva, SiMongodb, SiGreensock, SiPython, SiFramer, SiShopify, SiNextdotjs, SiPostgresql } from "react-icons/si";
+import { SiJavascript, SiTailwindcss, SiMysql, SiCanva, SiMongodb, SiGreensock, SiPython, SiFramer, SiShopify, SiNextdotjs, SiPostgresql, SiN8N, SiExpo } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,19 +15,22 @@ const skillsData = [
   { name: "CSS", icon: <FaCss3Alt className="text-blue-500" /> },
   { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> },
   { name: "React", icon: <FaReact className="text-cyan-400" /> },
+  { name: "React Native", icon: <TbBrandReactNative className="text-blue-400" /> },
+  { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
+  { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
+  { name: "Python", icon: <SiPython className="text-blue-500" /> },
   { name: "TailwindCSS", icon: <SiTailwindcss className="text-sky-400" /> },
   { name: "Gsap", icon: <SiGreensock className="text-green-300" /> },
-  { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
   { name: "Mongodb", icon: <SiMongodb className="text-green-500" /> },
+  { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600" /> },
   { name: "MySQL", icon: <SiMysql className="text-blue-400" /> },
+  { name: "n8n", icon: <SiN8N className="text-red-500" /> },
+  { name: "Expo", icon: <SiExpo className="text-white" /> },
   { name: "Figma", icon: <FaFigma className="text-pink-500" /> },
   { name: "Canva", icon: <SiCanva className="text-blue-300" /> },
-  { name: "Python", icon: <SiPython className="text-blue-500" /> },
   { name: "Framer", icon: <SiFramer className="text-purple-600" /> },
   { name: "Shopify", icon: <SiShopify className="text-green-600" /> },
-  { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
   { name: "WordPress", icon: <FaWordpress className="text-blue-400" /> },
-  { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600" /> },
 ];
 
 const Skills = () => {

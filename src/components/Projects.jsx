@@ -50,12 +50,28 @@ const webProjects = [
 const mobileProjects = [
   // Add mobile projects here
   {
-    title: "Mobile App Project",
-    description: "Description of your amazing mobile application built with modern technologies.",
-    tech: ["React Native", "Firebase", "Expo"],
-    live: "#",
+    title: "Esycook",
+    description: "A full-stack React Native and PostgreSQL app featuring Clerk authentication with 6-digit verification and integrated YouTube tutorials. Users can search recipes, filter by category, save favorites, and toggle between eight color themes",
+    tech: ["React Native", "PostgreSQL", "Expo"],
+    live: "https://github.com/Rayan37307/esycook",
     badge: "Mobile",
-    image: "/images/PROGRAMMER.png"
+    image: "/images/esycook.png"
+  },
+  {
+    title: "BuyIt.",
+    description: "A comprehensive React Native e-commerce ecosystem featuring a mobile storefront, Stripe payments, and a Node.js/Express admin dashboard. It leverages Clerk for secure social auth, TanStack Query for data fetching, and Inngest for background jobs, all monitored by Sentry and deployed via Sevalla.",
+    tech: ["React Native", "Clerk", "Expo"],
+    live: "https://github.com/Rayan37307/expo-node-ecommerce",
+    badge: "Mobile",
+    image: "/images/ecom.png"
+  },
+  {
+    title: "Whisper",
+    description: "Full-stack React Native and React chat ecosystem featuring a custom WebSocket server for real-time messaging, typing indicators, and presence. Powered by a Bun, Express, and MongoDB backend with Clerk auth, it delivers a production-ready solution without third-party dependencies.",
+    tech: ["React Native", "WebSocket", "Expo"],
+    live: "https://github.com/Rayan37307/trashchat",
+    badge: "Mobile",
+    image: "/images/whisper.png"
   }
 ];
 
@@ -151,7 +167,7 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="w-full text-center border border-gray-500 hover:bg-green-500 hover:text-black text-green-400 text-sm font-medium py-2 rounded-lg transition-colors block"
                   >
-                    Live Preview
+                    {activeTab === 'Mobile' ? 'Source Code' : 'Live Preview'}
                   </a>
                 </div>
               </div>
