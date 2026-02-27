@@ -70,10 +70,10 @@ const Contact = () => {
           <div className="flex flex-col gap-4 w-full sm:w-80 mx-auto">
             {/* Email Me */}
             <a
-              href="mailto:tasinbintareq@gmail.com"
-              className="w-full py-2 rounded-full bg-[#ddff00] text-black font-semibold hover:text-white"
+              href="mailto:tasindevx@gmail.com"
+              className="w-full py-2 rounded-full bg-[#ddff00] text-black font-semibold "
             >
-              tasinbintareq@gmail.com
+              tasindevx@gmail.com
             </a>
 
             {/* Schedule a Call */}
