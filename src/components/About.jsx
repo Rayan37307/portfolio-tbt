@@ -51,27 +51,28 @@ const About = () => {
             <span className="text-blue-500 font-bold">Tasin Bin Tareq</span>
           </h2>
           <h2 className="text-xl sm:text-2xl md:text-2xl font-semibold leading-snug">
-            I’m your <span className="text-white font-bold">Software Developer</span>
-          </h2>
-          <p className="text-gray-400 mt-3 text-sm sm:text-base leading-relaxed">
-            From architecting robust system logic to crafting intuitive user experiences, 
-            I specialize in building scalable software solutions. Let’s turn your complex 
-            challenges into high-performance applications that make a real impact. 
-            With a focus on clean code and efficient architecture, I bring your 
-            technical visions to life across multiple platforms.
-          </p>
+  I'm a <span className="text-white font-bold">Full-Stack Engineer & AI Architect</span>
+</h2>
+<p className="text-gray-400 mt-3 text-sm sm:text-base leading-relaxed">
+  From crafting pixel-perfect React Native mobile apps and Next.js web platforms 
+  to engineering FastAPI backends and agentic AI workflows, I build production-grade 
+  systems end-to-end. With 120+ public repositories and multiple shipped products 
+  across eCommerce, social media automation, and AI-powered tools, I bring 
+  your technical vision to life with clean architecture, real-world performance, 
+  and a bias toward shipping fast.
+</p>
           <p className="text-[#ff6600] mt-6 font-semibold font-mono tracking-wide text-sm sm:text-base">
             {'{ Beyond your Imaginations }'}
           </p>
 
           {/* Download Resume Button */}
-          {/* <a
-            href="/files/tarunck-resume.pdf" // <-- Place your resume in /public/files/
+          <a
+            href="/files/tasin.pdf" // <-- Place your resume in /public/files/
             download
             className="inline-block mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-300"
           >
             📄 Download Resume
-          </a> */}
+          </a>
         </div>
 
         {/* Image Section */}
