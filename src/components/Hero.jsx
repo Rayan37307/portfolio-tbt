@@ -44,7 +44,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="hero-section bg-[#0d0d0d] relative min-h-screen w-full text-white flex flex-col justify-center items-center overflow-hidden px-6 pb-24"
+      className="hero-section bg-[#0d0d0d] relative min-h-screen w-full text-white flex flex-col justify-center items-center overflow-hidden px-6 pt-24 pb-24"
     >
       {/* Subtle grid */}
       <div
