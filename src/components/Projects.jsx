@@ -95,6 +95,69 @@ const webProjects = [
   },
 ];
 
+const storeProjects = [
+  {
+    num: "01",
+    featured: true,
+    title: "Piku — Pet Supplies Storefront",
+    type: "Next.js · TypeScript · Bangladesh COD",
+    image: "/images/piku.jpg",
+    challenge: "A pet brand selling food, treats, toys and grooming supplies had no online storefront — only a social media page and DMs to take orders.",
+    solution: "Custom Next.js storefront with a 10+ SKU catalogue, wishlist, cart drawer, account area and a home-delivery checkout built around cash-on-delivery.",
+    outcome: "Live store where customers browse by category, build a cart and place a COD order without messaging anyone.",
+    tags: ["Next.js", "TypeScript", "Tailwind", "COD Checkout"],
+    live: "https://pukkipets.vercel.app",
+  },
+  {
+    num: "02",
+    featured: false,
+    title: "BUNON — Fashion & Lifestyle Store",
+    type: "Next.js · Stripe · Editorial Content",
+    image: "/images/bunon.jpg",
+    challenge: "A contemporary clothing and accessories label needed more than a product grid — a brand site that could carry collections, craft story and store info.",
+    solution: "Multi-page Next.js store: shop with product detail pages, collections for men/women/kids, editorial blog, craft and stores pages, policy pages, Stripe checkout and COD.",
+    outcome: "Complete brand commerce site — 10+ products, content pages and two payment paths live in production.",
+    tags: ["Next.js", "Stripe", "Tailwind", "SEO"],
+    live: "https://astheticbunon.vercel.app",
+  },
+  {
+    num: "03",
+    featured: false,
+    title: "Mrittika — Handcrafted Pottery Store",
+    type: "Next.js · Headless Commerce · COD",
+    image: "/images/mrittika.jpg",
+    challenge: "A pottery studio selling handmade ceramics needed a storefront that felt as considered as the work itself, with quick-view and wishlist for one-off pieces.",
+    solution: "Next.js storefront with gallery-led home page, product pages, quick view, compare, wishlist and a COD cart flow tuned for slow, browse-heavy buying.",
+    outcome: "Live studio store — handmade pieces from mugs to wall tiles sold online with a cart and checkout in place.",
+    tags: ["Next.js", "Tailwind", "Cart & Checkout", "COD"],
+    live: "https://mrittikacrafts.vercel.app",
+  },
+  {
+    num: "04",
+    featured: false,
+    title: "SkinLookBD — Skincare Storefront + Admin API",
+    type: "Astro · Tailwind · PHP REST Admin",
+    image: "/images/skinlook.jpg",
+    challenge: "An authentic-import skincare retailer needed a fast Bangla-first storefront it could run itself, without paying for a Shopify subscription.",
+    solution: "Astro static storefront on a custom PHP REST admin API — brands, categories, product pages, cart, accounts and wishlist, plus dedicated admin service for catalogue and banners.",
+    outcome: "Live store serving global K-beauty and derma brands across Bangladesh with a self-managed catalogue.",
+    tags: ["Astro", "Tailwind", "PHP REST API", "Bangla SEO"],
+    live: "https://skinlookbd.com",
+  },
+  {
+    num: "05",
+    featured: false,
+    title: "Dot & Key BD — Shopify Store Build",
+    type: "Shopify · Horizon Theme · Theme Customization",
+    image: "/images/dotandkey.png",
+    challenge: "The Bangladesh distributor of Dot & Key needed a branded Shopify store that matched the parent brand's look while selling locally.",
+    solution: "Shopify store built on the Horizon theme with deep customisation — hero carousels, concern-based collections, custom sections, digital wallet and COD checkout.",
+    outcome: "Live branded store with a full skin-concern catalogue and a checkout flow built for Bangladeshi buyers.",
+    tags: ["Shopify", "Horizon Theme", "Liquid", "CRO"],
+    live: "https://dotandkeybd.com",
+  },
+];
+
 const mobileProjects = [
   {
     num: "01",
@@ -131,19 +194,35 @@ const mobileProjects = [
   },
 ];
 
-const ProjectCard = ({ project, index }) => {
-  const [expanded, setExpanded] = useState(false);
-
+const ProjectCard = ({ project }) => {
   return (
     <div
-      className={`project-card group relative flex flex-col rounded-2xl border transition-all duration-500 ${
+      className={`project-card group relative flex flex-col overflow-hidden rounded-2xl border transition-all duration-500 ${
         project.featured
           ? 'bg-gradient-to-br from-[#1a1a2e] to-[#141414] border-[#ff6600]/25 hover:border-[#ff6600]/50 hover:shadow-[0_0_30px_-5px_rgba(255,102,0,0.2)]'
           : 'bg-[#111] border-gray-800 hover:border-gray-600'
       }`}
     >
       {project.featured && (
-        <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#ff6600] to-transparent opacity-50" />
+        <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#ff6600] to-transparent opacity-50 z-20" />
+      )}
+
+      {/* Screenshot */}
+      {project.image && (
+        <a
+          href={project.live || undefined}
+          target={project.live ? "_blank" : undefined}
+          rel="noopener noreferrer"
+          className="block relative aspect-[16/9] overflow-hidden bg-[#0a0a0a] border-b border-gray-800"
+        >
+          <img
+            src={project.image}
+            alt={`${project.title} preview`}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-70" />
+        </a>
       )}
 
       <div className="relative z-10 p-6 flex flex-col flex-1">
@@ -222,6 +301,7 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState('Web');
+  const tabs = ['Web', 'Stores', 'Mobile'];
 
   useEffect(() => {
     gsap.set(".project-card", { opacity: 0, y: 50 });
@@ -241,7 +321,8 @@ const Projects = () => {
     setTimeout(() => ScrollTrigger.refresh(), 100);
   }, [activeTab]);
 
-  const projectsToDisplay = activeTab === 'Web' ? webProjects : mobileProjects;
+  const projectsToDisplay =
+    activeTab === 'Web' ? webProjects : activeTab === 'Stores' ? storeProjects : mobileProjects;
 
   return (
     <section id="projects" className="projects-section w-full py-24 bg-[#0d0d0d] text-white">
@@ -259,7 +340,7 @@ const Projects = () => {
           </div>
 
           <div className="flex bg-[#1a1a1a] p-1 rounded-xl border border-gray-800 self-start md:self-auto">
-            {['Web', 'Mobile'].map((tab) => (
+            {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -276,7 +357,7 @@ const Projects = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {projectsToDisplay.map((project, index) => (
             <ProjectCard key={`${activeTab}-${index}`} project={project} index={index} />
           ))}
