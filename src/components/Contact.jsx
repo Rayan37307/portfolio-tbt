@@ -1,119 +1,86 @@
-import { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Footer from "../components/Footer"; // ✅ Import your Footer
+import { useState } from "react";
+import Footer from "./Footer";
+import { IconMail, IconCopy, IconCheck, IconArrowUpRight } from "./icons";
 
-gsap.registerPlugin(ScrollTrigger);
+const EMAIL = "tasindevx@gmail.com";
 
 const Contact = () => {
-  const [showCalendly, setShowCalendly] = useState(false);
-  const headingRef = useRef(null);
-  const contentRef = useRef(null);
+  const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    // Heading scale animation
-    gsap.fromTo(
-      headingRef.current,
-      { scale: 0.5, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 80%",
-          scrub: true,
-        },
-      }
-    );
-
-    // Section slide-up animation
-    gsap.fromTo(
-      contentRef.current,
-      { y: 100, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 85%",
-          scrub: true,
-        },
-      }
-    );
-  }, []);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
+  };
 
   return (
-    <div className="bg-[#0d0d0d] text-white flex flex-col min-h-screen">
-      {/* Contact Section */}
-      <section
-        id="contact"
-        className="flex-1 py-16 px-4 md:px-8 flex items-center"
-      >
-        <div className="max-w-4xl mx-auto text-center" ref={contentRef}>
-          {/* Heading */}
-          <h2
-            ref={headingRef}
-            className="text-4xl md:text-9xl font-bold mb-4"
-          >
-            Let’s <span className="text-white">Connect</span>
+    <div className="bg-[#060607]">
+      <section id="contact" className="section">
+        <div className="shell">
+          <p className="eyebrow">Contact</p>
+
+          <h2 className="h-display mt-6 max-w-[20ch]">
+            Let's build the thing your business keeps{" "}
+            <span className="serif-accent text-[var(--accent)]">working around</span>.
           </h2>
-          <p className="text-gray-400 mb-12 max-w-xl mx-auto">
-            Have a project in mind or just want to say hi? Drop me a message or
-            schedule a quick call. I’ll get back to you as soon as possible!
+
+          <p className="lede mt-6">
+            Tell me what's slow, manual or missing. I'll reply with an honest read on scope, cost
+            and whether I'm the right fit.
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-col gap-4 w-full sm:w-80 mx-auto">
-            {/* Email Me */}
+          <div className="mt-10 grid gap-4 sm:grid-cols-[1.2fr_0.8fr]">
             <a
-              href="mailto:tasindevx@gmail.com"
-              className="w-full py-2 rounded-full bg-[#ddff00] text-black font-semibold "
+              href={`mailto:${EMAIL}`}
+              className="group flex items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 transition-colors hover:border-[var(--line-strong)]"
             >
-              tasindevx@gmail.com
+              <div className="flex items-center gap-4">
+                <div className="grid h-10 w-10 place-items-center rounded-xl border border-[var(--line)] text-[var(--accent)]">
+                  <IconMail size={18} />
+                </div>
+                <div>
+                  <div className="meta">Email</div>
+                  <div className="mt-1 text-[15px] font-medium text-white">{EMAIL}</div>
+                </div>
+              </div>
+              <IconArrowUpRight
+                size={18}
+                className="text-[var(--dim)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
             </a>
 
-            {/* Schedule a Call */}
-            {/* <button
-              onClick={() => setShowCalendly(true)}
-              className="w-full py-2 px-20 rounded-full border border-gray-600 bg-[#0d0d0d] hover:bg-gray-600 text-white font-semibold"
+            <button
+              onClick={copy}
+              className="flex items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 text-left transition-colors hover:border-[var(--line-strong)]"
             >
-              📅 Schedule a Call
-            </button> */}
+              <div className="flex items-center gap-4">
+                <div className="grid h-10 w-10 place-items-center rounded-xl border border-[var(--line)] text-[var(--muted)]">
+                  {copied ? <IconCheck size={18} className="text-[var(--accent)]" /> : <IconCopy size={18} />}
+                </div>
+                <div>
+                  <div className="meta">Quick action</div>
+                  <div className="mt-1 text-[15px] font-medium text-white">
+                    {copied ? "Copied to clipboard" : "Copy email address"}
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[var(--line)] pt-8 text-[13px] text-[var(--muted)]">
+            <span>Based in Dhaka, Bangladesh</span>
+            <span className="hidden h-1 w-1 rounded-full bg-[var(--line-strong)] sm:block" />
+            <span>Working with clients worldwide</span>
+            <span className="hidden h-1 w-1 rounded-full bg-[var(--line-strong)] sm:block" />
+            <span>Replies within 24 hours</span>
           </div>
         </div>
-
-        {/* Calendly Modal */}
-        {showCalendly && (
-          <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-            <div className="bg-[#111] rounded-xl overflow-hidden w-full max-w-3xl relative">
-              {/* Close button */}
-              <button
-                onClick={() => setShowCalendly(false)}
-                className="absolute top-3 right-3 text-white text-xl hover:text-[#ff6600]"
-              >
-                ✕
-              </button>
-
-              {/* Calendly Embed */}
-              <div className="w-full h-[600px]">
-                <iframe
-                  src="https://calendly.com/cktarun"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  title="Schedule a Call"
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

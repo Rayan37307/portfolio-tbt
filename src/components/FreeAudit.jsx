@@ -1,79 +1,69 @@
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { IconTrendDown, IconGear, IconRocket, IconArrowUpRight } from "./icons";
 
 const auditPoints = [
-  { icon: "📉", label: "Conversion leaks", desc: "Identify where visitors drop off or don't take action." },
-  { icon: "⚙️", label: "Automation opportunities", desc: "Find manual work that can be systemized and scaled." },
-  { icon: "🚀", label: "Performance issues", desc: "Spot bottlenecks in speed, UX, and technical architecture." },
+  {
+    icon: IconTrendDown,
+    label: "Conversion leaks",
+    desc: "Where visitors drop off before they buy or enquire.",
+  },
+  {
+    icon: IconGear,
+    label: "Automation opportunities",
+    desc: "The manual work that can be systemised and scaled.",
+  },
+  {
+    icon: IconRocket,
+    label: "Performance issues",
+    desc: "Bottlenecks in speed, UX and technical architecture.",
+  },
 ];
 
-const FreeAudit = () => {
-  const sectionRef = useRef(null);
-  const contentRef = useRef(null);
+const FreeAudit = () => (
+  <section id="audit" className="section-tight">
+    <div className="shell">
+      <div className="relative overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--surface)]">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 accent-glow opacity-70" />
 
-  useEffect(() => {
-    gsap.fromTo(
-      contentRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  }, []);
-
-  return (
-    <section ref={sectionRef} id="audit" className="bg-[#0d0d0d] text-white w-full py-24 px-6">
-      <div className="max-w-4xl mx-auto" ref={contentRef}>
-        <div className="bg-gradient-to-br from-[#1a1a1a] to-[#111] border border-[#ff6600]/20 rounded-3xl p-8 md:p-14 text-center relative overflow-hidden">
-          {/* Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-[#ff6600]/10 blur-[60px] rounded-full pointer-events-none" />
-
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#ff6600]/30 bg-[#ff6600]/10 text-[#ff6600] text-sm font-medium mb-6">
-              Free Offer
-            </div>
-
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-              Need a Website, LMS or{" "}
-              <span className="text-[#ff6600]">Automation System?</span>
+        <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <p className="eyebrow">Free audit</p>
+            <h2 className="h-section mt-4 max-w-[24ch]">
+              Need a site, LMS or automation system? Start with a free audit.
             </h2>
-
-            <p className="text-gray-400 font-outfit text-lg mb-10 max-w-xl mx-auto">
-              I offer a free audit where I'll identify exactly what's holding your business back.
+            <p className="lede mt-5">
+              I'll look at what you have running now and tell you exactly what's holding it back —
+              no charge, no pitch deck.
             </p>
 
-            <div className="grid sm:grid-cols-3 gap-5 mb-10 text-left">
-              {auditPoints.map((point, i) => (
-                <div key={i} className="bg-[#0d0d0d]/60 border border-gray-800 rounded-xl p-5">
-                  <div className="text-2xl mb-3">{point.icon}</div>
-                  <div className="text-sm font-bold text-white mb-1">{point.label}</div>
-                  <div className="text-gray-500 text-xs font-outfit leading-relaxed">{point.desc}</div>
-                </div>
-              ))}
-            </div>
-
             <a
-              href="mailto:tasindevx@gmail.com?subject=Free Audit Request&body=Hi Tasin, I'd like to request a free audit for my business."
-              className="inline-flex items-center gap-2 px-10 py-4 bg-[#ff6600] hover:bg-[#e55a00] text-white font-bold rounded-full transition-all duration-300 hover:shadow-[0_0_32px_rgba(255,102,0,0.4)] text-base"
+              href="mailto:tasindevx@gmail.com?subject=Free%20audit%20request&body=Hi%20Tasin%2C%20I'd%20like%20a%20free%20audit%20for%20my%20business."
+              className="btn btn-primary mt-8"
             >
-              Request Free Audit →
+              Request the audit
+              <IconArrowUpRight size={16} />
             </a>
+          </div>
+
+          <div className="grid gap-3">
+            {auditPoints.map(({ icon: Icon, label, desc }) => (
+              <div
+                key={label}
+                className="flex gap-4 rounded-xl border border-[var(--line)] bg-[#060607] p-4"
+              >
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--line)] text-[var(--accent)]">
+                  <Icon size={17} />
+                </div>
+                <div>
+                  <div className="text-[13px] font-medium text-white">{label}</div>
+                  <div className="mt-1 text-[12px] leading-relaxed text-[var(--muted)]">{desc}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default FreeAudit;

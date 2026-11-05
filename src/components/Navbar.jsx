@@ -1,83 +1,126 @@
-import { useState } from "react";
-import { HiDotsHorizontal } from "react-icons/hi";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { IconMenu, IconClose, IconArrowUpRight } from "./icons";
+
+const links = [
+  { href: "#work", label: "Work", id: "work" },
+  { href: "#services", label: "Services", id: "services" },
+  { href: "#process", label: "Process", id: "process" },
+  { href: "#about", label: "About", id: "about" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const links = [
-    { href: "#home", label: "Home" },
-    { href: "#who-i-help", label: "Who I Help" },
-    { href: "#solutions", label: "Services" },
-    { href: "#projects", label: "Work" },
-    { href: "#about", label: "About" },
-    { href: "#contact", label: "Contact" },
-  ];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  const handleLinkClick = (e, href) => {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const go = (e, href) => {
     e.preventDefault();
-    const section = document.querySelector(href);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
+    setIsOpen(false);
+    const id = href.replace("#", "");
+    const el = document.getElementById(id) || document.querySelector(href);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 64;
+    setTimeout(() => window.scrollTo({ top, behavior: "smooth" }), isOpen ? 120 : 0);
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 text-white px-6 py-4 bg-transparent flex justify-between items-center">
-      <div className="font-bold text-3xl">
-        <a href="#home" onClick={(e) => handleLinkClick(e, "#home")} className="hover:text-[#ff6600] transition">
-          Tasin<span className="text-[#ff6600]">.</span>
-        </a>
-      </div>
-
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 border border-gray-600 rounded-full text-sm bg-[#111]/70 backdrop-blur-lg hover:bg-white/10 transition"
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "border-b border-[var(--line)] bg-[#060607]/80 backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent"
+        }`}
       >
-        <HiDotsHorizontal className="text-lg" />
-        Menu
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black flex flex-col items-center justify-center z-50"
+        <div className="shell flex h-16 items-center justify-between">
+          <a
+            href="#home"
+            onClick={(e) => go(e, "#home")}
+            className="group flex items-center gap-2.5 text-[15px] font-medium tracking-tight text-white"
           >
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-8 text-3xl hover:text-[#ff6600] transition"
-            >
-              ✕
-            </button>
+            <span className="grid h-7 w-7 place-items-center rounded-md border border-[var(--line-strong)] text-[11px] font-semibold text-white transition-colors group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]">
+              TT
+            </span>
+            <span className="hidden sm:inline">Tasin Bin Tareq</span>
+            <span className="sm:hidden">Tasin</span>
+          </a>
 
-            <ul className="w-full flex flex-col gap-8 text-[3.5rem] font-bold text-center relative">
-              {links.map((link, i) => (
-                <motion.li
-                  key={i}
-                  className="leading-none group flex flex-col items-center"
-                  initial={{ opacity: 0.4 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="hover:text-[#ff6600] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </a>
-                  <hr className="w-full border-t border-gray-800 mt-4" />
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+          <nav className="hidden items-center gap-1 md:flex">
+            {links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => go(e, l.href)}
+                className="rounded-full px-3.5 py-2 text-[13px] text-[var(--muted)] transition-colors hover:text-white"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <a href="#contact" onClick={(e) => go(e, "#contact")} className="btn btn-primary hidden sm:inline-flex">
+              Start a project
+              <IconArrowUpRight size={16} />
+            </a>
+            <button
+              onClick={() => setIsOpen(true)}
+              aria-label="Open menu"
+              className="grid h-9 w-9 place-items-center rounded-full border border-[var(--line-strong)] text-white transition-colors hover:border-white/30 md:hidden"
+            >
+              <IconMenu size={18} />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div
+        className={`fixed inset-0 z-[60] bg-[#060607] transition-all duration-300 md:hidden ${
+          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={!isOpen}
+      >
+        <div className="shell flex h-16 items-center justify-between">
+          <span className="text-[15px] font-medium text-white">Menu</span>
+          <button
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+            className="grid h-9 w-9 place-items-center rounded-full border border-[var(--line-strong)] text-white"
+          >
+            <IconClose size={18} />
+          </button>
+        </div>
+        <div className="shell mt-6">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={(e) => go(e, l.href)}
+              className="flex items-center justify-between border-b border-[var(--line)] py-5 text-2xl font-medium tracking-tight text-white"
+            >
+              {l.label}
+              <IconArrowUpRight size={18} className="text-[var(--dim)]" />
+            </a>
+          ))}
+          <a href="#contact" onClick={(e) => go(e, "#contact")} className="btn btn-primary mt-8 w-full">
+            Start a project
+          </a>
+        </div>
+      </div>
+    </>
   );
 };
 

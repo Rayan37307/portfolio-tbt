@@ -1,94 +1,65 @@
-import React, { useEffect } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { IconDownload } from "./icons";
 
-gsap.registerPlugin(ScrollTrigger);
+const About = () => (
+  <section id="about" className="section">
+    <div className="shell grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div>
+        <p className="eyebrow">About</p>
+        <h2 className="h-section mt-4 max-w-[22ch]">
+          Tasin Bin Tareq — full-stack developer &amp; automation engineer
+        </h2>
 
-const About = () => {
-  useEffect(() => {
-    gsap.set(".about-text, .about-image", { opacity: 0, y: 80 });
+        <p className="lede mt-6 max-w-[56ch]">
+          I build systems that help businesses scale. My work combines modern web development,
+          business automation and product design, so the software earns its keep instead of adding
+          another tab to someone's day.
+        </p>
 
-    gsap.to(".about-text", {
-      y: 0,
-      opacity: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".about-section",
-        start: "top 80%",
-        end: "top 30%",
-        scrub: 1.5,
-      },
-    });
+        <p className="mt-4 max-w-[56ch] text-[15px] leading-relaxed text-[var(--muted)]">
+          From React Native apps and Next.js platforms to FastAPI backends and agentic AI
+          workflows — production-grade, end to end, with a bias toward shipping and architecture
+          that survives the next feature.
+        </p>
 
-    gsap.to(".about-image", {
-      y: 0,
-      opacity: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".about-section",
-        start: "top 85%",
-        end: "top 35%",
-        scrub: 1.5,
-      },
-    });
-
-    setTimeout(() => ScrollTrigger.refresh(), 100);
-  }, []);
-
-  return (
-    <section
-      id="about"
-      className="about-section w-full min-h-screen bg-[#0d0d0d] text-white flex items-center justify-center px-6"
-    >
-      <div className="max-w-6xl w-full grid md:grid-cols-2 items-center gap-10">
-
-        {/* Text */}
-        <div className="about-text rounded-2xl p-8 md:p-12 border border-gray-800 bg-[#111]">
-          <p className="text-[#ff6600] text-sm font-semibold tracking-widest uppercase mb-4">About Me</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-1">
-            <span className="text-[#ff6600]">Tasin Bin Tareq</span>
-          </h2>
-          <h3 className="text-xl font-semibold text-gray-300 mb-5">
-            Full-Stack Developer & Automation Engineer
-          </h3>
-
-          <p className="text-gray-400 font-outfit text-base leading-relaxed mb-6">
-            I'm a Full-Stack Developer and Automation Engineer focused on building systems that help businesses scale.
-            My work combines modern web development, business automation, and user-focused product design to create
-            solutions that generate measurable impact.
-          </p>
-
-          <p className="text-gray-400 font-outfit text-base leading-relaxed mb-6">
-            From React Native mobile apps and Next.js web platforms to FastAPI backends and agentic AI workflows,
-            I build production-grade systems end-to-end — with a bias toward shipping fast and clean architecture that scales.
-          </p>
-
-          <p className="text-[#ff6600] font-semibold font-mono tracking-wide text-sm">
-            {'{ Beyond your Imaginations }'}
-          </p>
-
-          <a
-            href="/files/tasin.pdf"
-            download
-            className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-[#ff6600] hover:bg-[#e55a00] text-white font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_24px_rgba(255,102,0,0.35)]"
-          >
-            Download Resume →
-          </a>
+        <div className="mt-8 grid max-w-lg grid-cols-2 gap-px overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--line)]">
+          {[
+            ["Based in", "Dhaka, Bangladesh"],
+            ["Studio", "Webflick"],
+            ["Focus", "Commerce · Automation"],
+            ["Availability", "Open for projects"],
+          ].map(([k, v]) => (
+            <div key={k} className="bg-[#060607] px-4 py-3">
+              <div className="meta">{k}</div>
+              <div className="mt-1 text-[13px] text-[var(--ink)]">{v}</div>
+            </div>
+          ))}
         </div>
 
-        {/* Image */}
-        <div className="about-image flex justify-center">
+        <a href="/files/tasin.pdf" download className="btn btn-ghost mt-8">
+          Download résumé
+          <IconDownload size={16} />
+        </a>
+      </div>
+
+      <div className="relative">
+        <div className="pointer-events-none absolute -inset-6 rounded-3xl accent-glow opacity-60" />
+        <div className="relative overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)]">
           <img
             src="/images/about.png"
             alt="Tasin Bin Tareq"
-            className="rounded-2xl w-full max-w-xs sm:max-w-sm md:max-w-md object-cover border border-gray-800"
-            onError={(e) => { e.target.src = "/images/about.jpeg"; }}
+            className="aspect-[4/5] w-full object-cover"
+            onError={(e) => {
+              e.target.src = "/images/about.jpeg";
+            }}
           />
+          <div className="flex items-center justify-between border-t border-[var(--line)] px-5 py-3">
+            <span className="text-[12px] text-[var(--muted)]">Founder, Webflick</span>
+            <span className="text-[11px] uppercase tracking-[0.14em] text-[var(--dim)]">Est. 2023</span>
+          </div>
         </div>
-
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;

@@ -1,95 +1,93 @@
-import React, { useEffect, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useState } from "react";
+import { IconArrowUpRight } from "./icons";
 
 const webProjects = [
   {
     num: "01",
     featured: true,
-    title: "LeadFly — AI Lead Automation Platform",
-    type: "FastAPI · React · Agentic AI · Python",
+    title: "LeadFly",
+    subtitle: "AI lead automation platform",
+    type: "FastAPI · React · Agentic AI",
     challenge: "Agencies spending hours manually finding and qualifying leads across scattered data sources.",
-    solution: "Full-stack lead generation platform with agentic workflows that autonomously search, enrich, and score prospects.",
-    outcome: "Automated prospect discovery at scale — dramatically reducing manual research time for outreach agencies.",
-    tags: ["FastAPI", "React", "LangChain", "AI Agents", "Python"],
+    solution: "Full-stack lead generation platform with agentic workflows that autonomously search, enrich and score prospects.",
+    outcome: "Automated prospect discovery at scale, cutting manual research out of outreach.",
+    tags: ["FastAPI", "React", "LangChain", "AI Agents"],
     live: null,
   },
   {
     num: "02",
-    featured: false,
-    title: "OmniGuard — AI Social Media Manager",
-    type: "Next.js · FastAPI · Sentiment Analysis",
-    challenge: "Managing multiple social media platforms manually leads to delayed responses and inconsistent brand voice.",
-    solution: "AI-driven response engine monitoring multiple platforms simultaneously with brand sentiment analysis.",
-    outcome: "Real-time automated engagement across platforms with consistent brand voice and reduced response lag.",
+    title: "OmniGuard",
+    subtitle: "AI social media manager",
+    type: "Next.js · FastAPI · Sentiment analysis",
+    challenge: "Managing multiple platforms manually leads to delayed responses and an inconsistent brand voice.",
+    solution: "AI-driven response engine monitoring several platforms at once with brand sentiment analysis.",
+    outcome: "Real-time engagement with a consistent voice and far less response lag.",
     tags: ["Next.js", "FastAPI", "NLP", "Automation"],
     live: null,
   },
   {
     num: "03",
-    featured: false,
-    title: "Lingo — Language Learning Platform",
+    title: "Lingo",
+    subtitle: "Language learning platform",
     type: "Next.js 15 · TypeScript · Drizzle ORM",
-    challenge: "Language learning apps lack engaging progression systems and sustainable monetization.",
-    solution: "Full-stack Duolingo-style LMS with lesson flows, challenge progression, hearts system, and Stripe subscriptions.",
-    outcome: "Production-ready subscription learning platform with gamified UX and admin panel.",
-    tags: ["Next.js 15", "TypeScript", "Neon DB", "Stripe"],
+    challenge: "Language apps rarely get progression systems and monetisation right at the same time.",
+    solution: "Duolingo-style LMS with lesson flows, challenge progression, a hearts system and Stripe subscriptions.",
+    outcome: "Production-ready subscription platform with gamified UX and an admin panel.",
+    tags: ["Next.js 15", "TypeScript", "Neon", "Stripe"],
     live: null,
   },
   {
     num: "04",
-    featured: false,
-    title: "Yoom — Realtime Video Conferencing",
+    title: "Yoom",
+    subtitle: "Real-time video conferencing",
     type: "Next.js · Stream SDK · WebRTC",
-    challenge: "Teams need reliable, feature-rich video conferencing without enterprise-level costs.",
-    solution: "HD real-time conferencing with meeting recording, live chat, screen sharing, and personal room links.",
-    outcome: "Fully functional conferencing platform deployed on Vercel serving multiple concurrent users.",
-    tags: ["Next.js", "Stream SDK", "WebRTC", "Real-time"],
+    challenge: "Teams need reliable, feature-rich conferencing without enterprise pricing.",
+    solution: "HD conferencing with recording, live chat, screen sharing and personal room links.",
+    outcome: "Deployed conferencing platform serving concurrent users.",
+    tags: ["Next.js", "Stream SDK", "WebRTC"],
     live: "https://yoom-yolo.vercel.app/",
   },
   {
     num: "05",
-    featured: false,
-    title: "Innovist BD — Multi-Vendor Marketplace",
-    type: "React · Express.js · Cloud Deploy",
-    challenge: "Multi-vendor marketplaces need complex automation for commissions, inventory, and seller management.",
-    solution: "Multi-vendor architecture with seller dashboards, admin controls, and automated commission management.",
-    outcome: "Live production marketplace handling multiple vendors with automated operations.",
-    tags: ["React", "Express.js", "CI/CD", "Cloud"],
+    title: "Innovist BD",
+    subtitle: "Multi-vendor marketplace",
+    type: "React · Express.js · Cloud",
+    challenge: "Marketplaces need automation for commissions, inventory and seller management.",
+    solution: "Multi-vendor architecture with seller dashboards, admin controls and automated commissions.",
+    outcome: "Live marketplace running multiple vendors with automated operations.",
+    tags: ["React", "Express.js", "CI/CD"],
     live: "https://innovistbd.com/",
   },
   {
     num: "06",
-    featured: false,
-    title: "WishCare BD — Full-Stack eCommerce",
-    type: "React · Express.js · Payment Gateway",
-    challenge: "Bangladesh ecommerce needed high-performance APIs and integrated local payment processing.",
-    solution: "End-to-end eCommerce with React frontend, Express.js backend, and integrated payment gateway.",
-    outcome: "Optimized database schema and API response times built for high-traffic operations.",
-    tags: ["React", "Express.js", "CI/CD", "Cloud"],
+    title: "WishCare BD",
+    subtitle: "Full-stack ecommerce",
+    type: "React · Express.js · Payments",
+    challenge: "Local ecommerce needed high-performance APIs and integrated payment processing.",
+    solution: "End-to-end commerce with a React frontend, Express backend and payment gateway integration.",
+    outcome: "Optimised schema and API response times built for high traffic.",
+    tags: ["React", "Express.js", "Payments"],
     live: null,
   },
   {
     num: "07",
-    featured: false,
-    title: "TZS International — Travel Platform",
+    title: "TZS International",
+    subtitle: "Travel platform",
     type: "WordPress · PHP · Custom APIs",
-    challenge: "Travel agency lacked online presence and automated booking capability.",
-    solution: "Responsive travel site with custom booking system and third-party availability API integrations.",
-    outcome: "Live platform enabling online reservations and reducing manual booking workload.",
-    tags: ["WordPress", "PHP", "Custom Plugins", "REST API"],
+    challenge: "A travel agency with no online presence and manual booking handling.",
+    solution: "Responsive travel site with a custom booking system and third-party availability APIs.",
+    outcome: "Live platform taking reservations online and reducing manual workload.",
+    tags: ["WordPress", "PHP", "REST API"],
     live: "https://tzsinternationalbd.com/",
   },
   {
     num: "08",
-    featured: false,
-    title: "Khamar Nokhla Govt Primary School",
+    title: "Khamar Nokhla School",
+    subtitle: "Government primary school portal",
     type: "HTML · CSS · JavaScript",
-    challenge: "School needed digital presence for guardian communication and community outreach.",
-    solution: "Static site with teacher profiles, student testimonials, facility showcase, and guardian appointment form.",
-    outcome: "Accessible school portal enabling guardian engagement and school discoverability.",
+    challenge: "A school needed a digital home for guardian communication and community outreach.",
+    solution: "Static site with teacher profiles, student testimonials, facilities and an appointment form.",
+    outcome: "Accessible portal improving guardian engagement and discoverability.",
     tags: ["HTML", "CSS", "JavaScript"],
     live: "https://khamar-nokhla.vercel.app/",
   },
@@ -99,61 +97,62 @@ const storeProjects = [
   {
     num: "01",
     featured: true,
-    title: "Piku — Pet Supplies Storefront",
-    type: "Next.js · TypeScript · Bangladesh COD",
+    title: "Piku",
+    subtitle: "Pet supplies storefront",
+    type: "Next.js · TypeScript · COD checkout",
     image: "/images/piku.jpg",
-    challenge: "A pet brand selling food, treats, toys and grooming supplies had no online storefront — only a social media page and DMs to take orders.",
-    solution: "Custom Next.js storefront with a 10+ SKU catalogue, wishlist, cart drawer, account area and a home-delivery checkout built around cash-on-delivery.",
-    outcome: "Live store where customers browse by category, build a cart and place a COD order without messaging anyone.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "COD Checkout"],
+    challenge: "A pet brand selling food, treats, toys and grooming supplies had no storefront — orders came through DMs.",
+    solution: "Next.js storefront with a full catalogue, wishlist, cart drawer, account area and home-delivery checkout built around cash on delivery.",
+    outcome: "Live store where customers browse by category, build a cart and order without messaging anyone.",
+    tags: ["Next.js", "TypeScript", "Tailwind", "COD"],
     live: "https://pukkipets.vercel.app",
   },
   {
     num: "02",
-    featured: false,
-    title: "BUNON — Fashion & Lifestyle Store",
-    type: "Next.js · Stripe · Editorial Content",
+    title: "BUNON",
+    subtitle: "Fashion and lifestyle store",
+    type: "Next.js · Stripe · Editorial content",
     image: "/images/bunon.jpg",
-    challenge: "A contemporary clothing and accessories label needed more than a product grid — a brand site that could carry collections, craft story and store info.",
-    solution: "Multi-page Next.js store: shop with product detail pages, collections for men/women/kids, editorial blog, craft and stores pages, policy pages, Stripe checkout and COD.",
-    outcome: "Complete brand commerce site — 10+ products, content pages and two payment paths live in production.",
+    challenge: "A contemporary clothing label needed more than a product grid — collections, craft story and store info in one place.",
+    solution: "Multi-page Next.js store: product detail pages, men/women/kids collections, editorial blog, craft and stores pages, policy pages, Stripe checkout and COD.",
+    outcome: "Complete brand commerce site live in production with two payment paths.",
     tags: ["Next.js", "Stripe", "Tailwind", "SEO"],
     live: "https://astheticbunon.vercel.app",
   },
   {
     num: "03",
-    featured: false,
-    title: "Mrittika — Handcrafted Pottery Store",
-    type: "Next.js · Headless Commerce · COD",
+    title: "Mrittika",
+    subtitle: "Handcrafted pottery store",
+    type: "Next.js · Headless commerce · COD",
     image: "/images/mrittika.jpg",
-    challenge: "A pottery studio selling handmade ceramics needed a storefront that felt as considered as the work itself, with quick-view and wishlist for one-off pieces.",
-    solution: "Next.js storefront with gallery-led home page, product pages, quick view, compare, wishlist and a COD cart flow tuned for slow, browse-heavy buying.",
-    outcome: "Live studio store — handmade pieces from mugs to wall tiles sold online with a cart and checkout in place.",
-    tags: ["Next.js", "Tailwind", "Cart & Checkout", "COD"],
+    challenge: "A pottery studio selling handmade ceramics needed a storefront as considered as the work itself.",
+    solution: "Gallery-led Next.js storefront with product pages, quick view, compare, wishlist and a cart flow tuned for slow, browse-heavy buying.",
+    outcome: "Live studio store selling one-off pieces from mugs to wall tiles.",
+    tags: ["Next.js", "Tailwind", "Cart", "COD"],
     live: "https://mrittikacrafts.vercel.app",
   },
   {
     num: "04",
-    featured: false,
-    title: "SkinLookBD — Skincare Storefront + Admin API",
-    type: "Astro · Tailwind · PHP REST Admin",
+    title: "SkinLookBD",
+    subtitle: "Skincare storefront + admin API",
+    type: "Astro · Tailwind · PHP REST admin",
     image: "/images/skinlook.jpg",
-    challenge: "An authentic-import skincare retailer needed a fast Bangla-first storefront it could run itself, without paying for a Shopify subscription.",
-    solution: "Astro static storefront on a custom PHP REST admin API — brands, categories, product pages, cart, accounts and wishlist, plus dedicated admin service for catalogue and banners.",
-    outcome: "Live store serving global K-beauty and derma brands across Bangladesh with a self-managed catalogue.",
-    tags: ["Astro", "Tailwind", "PHP REST API", "Bangla SEO"],
+    challenge: "An authentic-import skincare retailer needed a fast, Bangla-first storefront it could run itself.",
+    solution: "Astro static storefront on a custom PHP REST admin API — brands, categories, product pages, cart, accounts, wishlist and a self-managed catalogue.",
+    outcome: "Live store serving global K-beauty and derma brands across Bangladesh.",
+    tags: ["Astro", "Tailwind", "PHP REST", "Bangla SEO"],
     live: "https://skinlookbd.com",
   },
   {
     num: "05",
-    featured: false,
-    title: "Dot & Key BD — Shopify Store Build",
-    type: "Shopify · Horizon Theme · Theme Customization",
+    title: "Dot & Key BD",
+    subtitle: "Shopify store build",
+    type: "Shopify · Horizon theme · Liquid",
     image: "/images/dotandkey.png",
-    challenge: "The Bangladesh distributor of Dot & Key needed a branded Shopify store that matched the parent brand's look while selling locally.",
-    solution: "Shopify store built on the Horizon theme with deep customisation — hero carousels, concern-based collections, custom sections, digital wallet and COD checkout.",
-    outcome: "Live branded store with a full skin-concern catalogue and a checkout flow built for Bangladeshi buyers.",
-    tags: ["Shopify", "Horizon Theme", "Liquid", "CRO"],
+    challenge: "The Bangladesh distributor of Dot & Key needed a branded Shopify store that matched the parent brand and sold locally.",
+    solution: "Shopify store on the Horizon theme with deep customisation — hero carousels, concern-based collections, custom sections, digital wallets and COD.",
+    outcome: "Live branded store with a full skin-concern catalogue and a local checkout flow.",
+    tags: ["Shopify", "Horizon", "Liquid", "CRO"],
     live: "https://dotandkeybd.com",
   },
 ];
@@ -162,206 +161,174 @@ const mobileProjects = [
   {
     num: "01",
     featured: true,
-    title: "Esycook — Recipe Discovery App",
+    title: "Esycook",
+    subtitle: "Recipe discovery app",
     type: "React Native · PostgreSQL · Expo",
-    challenge: "Mobile users needed a rich recipe app with personalization and multimedia learning.",
-    solution: "Full-stack RN app with Clerk auth, YouTube tutorial integration, favorites, and 8 color themes.",
-    outcome: "Feature-complete recipe platform with search, filtering, and personalized experience.",
+    challenge: "Mobile users needed a rich recipe app with personalisation and multimedia learning.",
+    solution: "Full-stack RN app with Clerk auth, YouTube tutorial integration, favourites and eight colour themes.",
+    outcome: "Feature-complete recipe platform with search, filtering and a personalised feed.",
     tags: ["React Native", "PostgreSQL", "Expo"],
     live: "https://github.com/Rayan37307/esycook",
   },
   {
     num: "02",
-    featured: false,
-    title: "BuyIt. — Mobile eCommerce Ecosystem",
+    title: "BuyIt.",
+    subtitle: "Mobile ecommerce ecosystem",
     type: "React Native · Node.js · Stripe",
-    challenge: "Mobile shoppers need a seamless purchase experience with secure payments and social login.",
-    solution: "Complete RN e-commerce app with Stripe payments, Clerk social auth, and Node.js/Express admin dashboard.",
-    outcome: "End-to-end mobile commerce solution with admin control and real-time inventory.",
+    challenge: "Mobile shoppers need a seamless purchase flow with secure payments and social login.",
+    solution: "RN commerce app with Stripe payments, Clerk social auth and a Node/Express admin dashboard.",
+    outcome: "End-to-end mobile commerce with admin control and real-time inventory.",
     tags: ["React Native", "Clerk", "Expo", "Stripe"],
     live: "https://github.com/Rayan37307/expo-node-ecommerce",
   },
   {
     num: "03",
-    featured: false,
-    title: "Whisper — Real-time Chat Platform",
+    title: "Whisper",
+    subtitle: "Real-time chat platform",
     type: "React Native · WebSocket · Bun",
-    challenge: "Teams need real-time mobile messaging with typing indicators and presence without third-party lock-in.",
-    solution: "Custom WebSocket server with real-time messaging, typing indicators, and Bun/MongoDB backend.",
-    outcome: "Low-latency chat ecosystem with custom infrastructure, no third-party messaging dependency.",
-    tags: ["React Native", "WebSocket", "MongoDB", "Expo"],
+    challenge: "Teams need real-time mobile messaging with presence and typing indicators, without third-party lock-in.",
+    solution: "Custom WebSocket server with real-time messaging, typing indicators and a Bun/MongoDB backend.",
+    outcome: "Low-latency chat ecosystem on custom infrastructure.",
+    tags: ["React Native", "WebSocket", "MongoDB"],
     live: "https://github.com/Rayan37307/trashchat",
   },
 ];
 
+const tabs = [
+  { id: "Stores", label: "Client stores", items: storeProjects },
+  { id: "Web", label: "Products", items: webProjects },
+  { id: "Mobile", label: "Mobile", items: mobileProjects },
+];
+
 const ProjectCard = ({ project }) => {
+  const Wrapper = project.live ? "a" : "div";
+  const wrapperProps = project.live
+    ? { href: project.live, target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
   return (
-    <div
-      className={`project-card group relative flex flex-col overflow-hidden rounded-2xl border transition-all duration-500 ${
-        project.featured
-          ? 'bg-gradient-to-br from-[#1a1a2e] to-[#141414] border-[#ff6600]/25 hover:border-[#ff6600]/50 hover:shadow-[0_0_30px_-5px_rgba(255,102,0,0.2)]'
-          : 'bg-[#111] border-gray-800 hover:border-gray-600'
+    <Wrapper
+      {...wrapperProps}
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--surface)] transition-all duration-300 hover:border-[var(--line-strong)] hover:bg-[var(--surface-2)] ${
+        project.featured && project.image ? "sm:col-span-2 lg:col-span-2" : ""
       }`}
     >
-      {project.featured && (
-        <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#ff6600] to-transparent opacity-50 z-20" />
-      )}
-
-      {/* Screenshot */}
       {project.image && (
-        <a
-          href={project.live || undefined}
-          target={project.live ? "_blank" : undefined}
-          rel="noopener noreferrer"
-          className="block relative aspect-[16/9] overflow-hidden bg-[#0a0a0a] border-b border-gray-800"
-        >
+        <div className="relative aspect-[16/9] overflow-hidden border-b border-[var(--line)] bg-[#060607]">
           <img
             src={project.image}
-            alt={`${project.title} preview`}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            alt={`${project.title} storefront`}
+            className="h-full w-full object-cover opacity-90 transition-all duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-70" />
-        </a>
+        </div>
       )}
 
-      <div className="relative z-10 p-6 flex flex-col flex-1">
-        {/* Number + badge */}
-        <div className="flex items-center justify-between mb-4">
-          <span className={`text-sm font-mono tracking-wider ${project.featured ? 'text-[#ff6600]' : 'text-gray-500'}`}>
-            {project.num}{project.featured ? ' · Featured' : ''}
-          </span>
-          <div className="text-gray-500 group-hover:text-[#ff6600] transition-colors duration-300">
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M2 12L12 2M12 2H5M12 2v7" />
-            </svg>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <span className="meta mono">{project.num}</span>
+            <h3 className="mt-2 text-lg font-medium tracking-tight text-white">
+              {project.title}
+              <span className="ml-2 text-[13px] font-normal text-[var(--dim)]">{project.subtitle}</span>
+            </h3>
           </div>
+          {project.live && (
+            <IconArrowUpRight
+              size={18}
+              className="mt-1 shrink-0 text-[var(--dim)] transition-colors group-hover:text-[var(--accent)]"
+            />
+          )}
         </div>
 
-        {/* Title */}
-        <h3 className="text-lg font-semibold leading-snug mb-1.5 group-hover:text-white transition-colors">
-          {project.title}
-        </h3>
+        <p className="mt-1 text-[12px] text-[var(--dim)]">{project.type}</p>
 
-        {/* Type */}
-        <div className={`text-xs font-medium mb-4 ${project.featured ? 'text-[#ff6600]' : 'text-cyan-400'}`}>
-          {project.type}
+        <div className="mt-5 space-y-3.5 border-t border-[var(--line)] pt-5">
+          {[
+            ["Challenge", project.challenge],
+            ["Solution", project.solution],
+            ["Outcome", project.outcome],
+          ].map(([label, text]) => (
+            <div key={label}>
+              <span className="meta">{label}</span>
+              <p className="mt-1 text-[13px] leading-relaxed text-[var(--muted)]">{text}</p>
+            </div>
+          ))}
         </div>
 
-        {/* Challenge → Solution → Outcome */}
-        <div className="space-y-3 mb-4 flex-1">
-          <div>
-            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Challenge</span>
-            <p className="text-gray-400 text-sm font-outfit leading-relaxed mt-1">{project.challenge}</p>
-          </div>
-          <div>
-            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Solution</span>
-            <p className="text-gray-400 text-sm font-outfit leading-relaxed mt-1">{project.solution}</p>
-          </div>
-          <div>
-            <span className="text-xs font-semibold text-[#ff6600]/70 uppercase tracking-wider">Outcome</span>
-            <p className="text-gray-300 text-sm font-outfit leading-relaxed mt-1">{project.outcome}</p>
-          </div>
-        </div>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag, i) => (
-            <span
-              key={i}
-              className="text-xs bg-gray-800/60 text-gray-400 px-2.5 py-1 rounded-full border border-gray-700/40"
-            >
+        <div className="mt-auto flex flex-wrap gap-1.5 pt-5">
+          {project.tags.map((tag) => (
+            <span key={tag} className="tag">
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Link */}
-        <div className="mt-auto">
+        <div className="mt-5 border-t border-[var(--line)] pt-4">
           {project.live ? (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#ff6600] transition-colors group/link"
-            >
-              Live Demo
-              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform">
-                <path d="M2 12L12 2M12 2H5M12 2v7" />
-              </svg>
-            </a>
+            <span className="inline-flex items-center gap-1.5 text-[13px] font-medium text-white">
+              Visit live site
+              <IconArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
           ) : (
-            <span className="text-sm text-gray-700">Private Project</span>
+            <span className="text-[13px] text-[var(--dim)]">Private project</span>
           )}
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState('Web');
-  const tabs = ['Web', 'Stores', 'Mobile'];
-
-  useEffect(() => {
-    gsap.set(".project-card", { opacity: 0, y: 50 });
-    gsap.to(".project-card", {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: ".projects-section",
-        start: "top 80%",
-        end: "top 40%",
-        scrub: 1,
-      },
-    });
-    setTimeout(() => ScrollTrigger.refresh(), 100);
-  }, [activeTab]);
-
-  const projectsToDisplay =
-    activeTab === 'Web' ? webProjects : activeTab === 'Stores' ? storeProjects : mobileProjects;
+  const [active, setActive] = useState("Stores");
+  const current = tabs.find((t) => t.id === active);
 
   return (
-    <section id="projects" className="projects-section w-full py-24 bg-[#0d0d0d] text-white">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+    <section id="work" className="section">
+      <div className="shell">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-[#ff6600] text-sm font-semibold tracking-widest uppercase mb-3">Portfolio</p>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              Case <span className="text-[#ff6600]">Studies</span>
+            <p className="eyebrow">Selected work</p>
+            <h2 className="h-section mt-4 max-w-[26ch]">
+              Live products, shipped for real businesses
             </h2>
-            <p className="text-gray-400 font-outfit mt-3 max-w-md">
-              Real problems solved with custom software solutions.
-            </p>
           </div>
 
-          <div className="flex bg-[#1a1a1a] p-1 rounded-xl border border-gray-800 self-start md:self-auto">
+          <div className="flex flex-wrap gap-1 rounded-full border border-[var(--line)] bg-[var(--surface)] p-1">
             {tabs.map((tab) => (
               <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
-                  activeTab === tab
-                    ? 'bg-[#ff6600] text-white shadow-lg'
-                    : 'text-gray-400 hover:text-white'
+                key={tab.id}
+                onClick={() => setActive(tab.id)}
+                className={`rounded-full px-4 py-2 text-[13px] font-medium transition-colors ${
+                  active === tab.id
+                    ? "bg-[var(--accent)] text-[#060607]"
+                    : "text-[var(--muted)] hover:text-white"
                 }`}
               >
-                {tab}
+                {tab.label}
+                <span className="ml-1.5 text-[11px] opacity-60">{tab.items.length}</span>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
-          {projectsToDisplay.map((project, index) => (
-            <ProjectCard key={`${activeTab}-${index}`} project={project} index={index} />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {current.items.map((project) => (
+            <ProjectCard key={`${active}-${project.num}`} project={project} />
           ))}
         </div>
+
+        <p className="mt-8 text-[13px] text-[var(--dim)]">
+          More builds on{" "}
+          <a
+            href="https://github.com/Rayan37307"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline decoration-[var(--line-strong)] underline-offset-4 transition-colors hover:decoration-[var(--accent)]"
+          >
+            GitHub
+          </a>
+          .
+        </p>
       </div>
     </section>
   );
