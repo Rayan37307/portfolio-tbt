@@ -155,6 +155,30 @@ const storeProjects = [
     tags: ["Shopify", "Horizon", "Liquid", "CRO"],
     live: "https://dotandkeybd.com",
   },
+  {
+    num: "06",
+    title: "WishCareBD",
+    subtitle: "Science-forward selfcare store",
+    type: "Shopify · Horizon theme · Liquid",
+    image: "/images/wishcare.webp",
+    challenge: "A dermatologist-recommended skincare and haircare brand selling across 15+ concern collections had to make one Shopify storefront carry both a science-led story and a shop-by-concern journey.",
+    solution: "Shopify store on the Horizon theme with customised brand and section blocks — concern-based collections, bestseller and combo merchandising, a tinted-sunscreen and lip-care range, digital wallets and COD at checkout.",
+    outcome: "Live store covering skin, hair, sun and body care with a 50+ product catalogue and local payment methods in place.",
+    tags: ["Shopify", "Horizon", "Liquid", "Merchandising"],
+    live: "https://wishcarebd.com",
+  },
+  {
+    num: "07",
+    title: "Innovist BD",
+    subtitle: "Multi-brand beauty retail store",
+    type: "Shopify · Dawn theme · Multi-brand catalogue",
+    image: "/images/innovist.webp",
+    challenge: "A beauty distributor running several D2C brands — Bare Anatomy, Chemist at Play and Sunscoop — needed one Bangladesh storefront that kept each brand's range shoppable without splitting into separate sites.",
+    solution: "Shopify store on a customised Dawn theme: per-brand store and bestseller pages, 50+ concern-led collections across hair, skin and body, brand-specific combo merchandising, digital wallets and COD.",
+    outcome: "Single live storefront carrying three brand ranges with brand-level landing pages and a shared checkout.",
+    tags: ["Shopify", "Dawn", "Multi-brand", "Liquid"],
+    live: "https://innovistbd.com",
+  },
 ];
 
 const mobileProjects = [
