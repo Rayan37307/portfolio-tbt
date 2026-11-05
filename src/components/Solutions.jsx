@@ -1,106 +1,81 @@
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import {
+  IconCart, IconBook, IconBolt, IconSpark, IconChart, IconWrench, IconUsers, IconPortal,
+} from "./icons";
 
 const solutions = [
   {
-    icon: "🛒",
-    title: "Ecommerce Platforms",
-    desc: "Custom storefronts, payment systems, inventory management, and multi-vendor marketplaces.",
+    icon: IconCart,
+    title: "Ecommerce platforms",
+    desc: "Storefronts, payment rails, inventory and multi-vendor marketplaces.",
   },
   {
-    icon: "📚",
-    title: "Learning Management Systems",
-    desc: "Course delivery, lesson flows, progress tracking, subscription billing, and student portals.",
+    icon: IconBook,
+    title: "Learning platforms",
+    desc: "Course delivery, lesson flows, progress tracking and subscription billing.",
   },
   {
-    icon: "⚡",
-    title: "SaaS Applications",
-    desc: "Subscription platforms, role-based access, API integrations, and scalable cloud architecture.",
+    icon: IconBolt,
+    title: "SaaS applications",
+    desc: "Subscriptions, role-based access, API integrations, cloud architecture.",
   },
   {
-    icon: "🤖",
-    title: "AI Automations",
-    desc: "Agentic workflows, data pipelines, lead generation automation, and intelligent processing systems.",
+    icon: IconSpark,
+    title: "AI automation",
+    desc: "Agentic workflows, data pipelines and lead generation that runs itself.",
   },
   {
-    icon: "📊",
-    title: "Admin Dashboards",
-    desc: "Analytics interfaces, reporting tools, management panels, and real-time data visualization.",
+    icon: IconChart,
+    title: "Admin dashboards",
+    desc: "Reporting, management panels and real-time operational data.",
   },
   {
-    icon: "🔧",
-    title: "Internal Business Tools",
-    desc: "Workflow automation, team productivity systems, internal APIs, and process digitization.",
+    icon: IconWrench,
+    title: "Internal tools",
+    desc: "Workflow automation and process digitisation for the team behind the product.",
   },
   {
-    icon: "👥",
-    title: "CRM Systems",
-    desc: "Lead management, customer tracking, sales pipelines, and automated follow-up workflows.",
+    icon: IconUsers,
+    title: "CRM systems",
+    desc: "Lead management, sales pipelines and automated follow-up.",
   },
   {
-    icon: "🏠",
-    title: "Client Portals",
-    desc: "Onboarding flows, project tracking, file sharing, invoicing, and client communication hubs.",
+    icon: IconPortal,
+    title: "Client portals",
+    desc: "Onboarding, project tracking, files, invoicing and communication in one place.",
   },
 ];
 
-const Solutions = () => {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
-
-  useEffect(() => {
-    gsap.fromTo(
-      cardsRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out",
-        stagger: 0.08,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  }, []);
-
-  return (
-    <section ref={sectionRef} id="solutions" className="bg-[#080808] text-white w-full py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <p className="text-[#ff6600] text-sm font-semibold tracking-widest uppercase mb-3">Services</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Solutions I <span className="text-[#ff6600]">Build</span>
-          </h2>
-          <p className="text-gray-400 font-outfit max-w-xl mx-auto text-lg">
-            End-to-end custom software tailored to your business model and growth goals.
-          </p>
+const Solutions = () => (
+  <section id="services" className="section">
+    <div className="shell">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p className="eyebrow">Services</p>
+          <h2 className="h-section mt-4">What I build</h2>
         </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {solutions.map((sol, i) => (
-            <div
-              key={i}
-              ref={(el) => (cardsRef.current[i] = el)}
-              className="bg-[#111] border border-gray-800 rounded-2xl p-6 hover:border-[#ff6600]/40 hover:shadow-[0_0_20px_rgba(255,102,0,0.07)] transition-all duration-300 group"
-            >
-              <div className="text-3xl mb-4">{sol.icon}</div>
-              <h3 className="text-base font-bold mb-2 group-hover:text-[#ff6600] transition-colors duration-300">
-                {sol.title}
-              </h3>
-              <p className="text-gray-500 text-sm font-outfit leading-relaxed">{sol.desc}</p>
-            </div>
-          ))}
-        </div>
+        <p className="lede lg:max-w-sm">
+          End-to-end product work — architecture, build, deploy and the handover docs your team
+          needs to keep it running.
+        </p>
       </div>
-    </section>
-  );
-};
+
+      <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
+        {solutions.map(({ icon: Icon, title, desc }) => (
+          <article
+            key={title}
+            className="group bg-[#060607] p-6 transition-colors duration-300 hover:bg-[var(--surface)]"
+          >
+            <Icon
+              size={20}
+              className="text-[var(--dim)] transition-colors duration-300 group-hover:text-[var(--accent)]"
+            />
+            <h3 className="mt-5 text-[15px] font-medium tracking-tight text-white">{title}</h3>
+            <p className="mt-2 text-[13px] leading-relaxed text-[var(--muted)]">{desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default Solutions;

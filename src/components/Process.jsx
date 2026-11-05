@@ -1,105 +1,65 @@
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { IconSearch, IconMap, IconGear, IconCheck, IconRocket } from "./icons";
 
 const steps = [
   {
     num: "01",
+    icon: IconSearch,
     title: "Discovery",
-    desc: "Deep-dive into your business goals, target users, constraints, and success metrics before writing a single line of code.",
-    icon: "🔍",
+    desc: "Business goals, users, constraints and success metrics — understood before a line of code.",
   },
   {
     num: "02",
+    icon: IconMap,
     title: "Strategy",
-    desc: "Define the architecture, tech stack, data models, and project roadmap with clear milestones and deliverables.",
-    icon: "🗺",
+    desc: "Architecture, stack, data models and a roadmap with clear milestones.",
   },
   {
     num: "03",
-    title: "Development",
-    desc: "Build scalable, production-grade solutions with clean code, modular architecture, and regular progress updates.",
-    icon: "⚙️",
+    icon: IconGear,
+    title: "Build",
+    desc: "Production-grade code, modular architecture and progress you can see weekly.",
   },
   {
     num: "04",
-    title: "Testing",
-    desc: "Ensure quality, performance, and reliability across all user scenarios — devices, edge cases, and load conditions.",
-    icon: "✅",
+    icon: IconCheck,
+    title: "Test",
+    desc: "Devices, edge cases and load conditions checked before anyone calls it done.",
   },
   {
     num: "05",
+    icon: IconRocket,
     title: "Launch",
-    desc: "Deploy with CI/CD pipelines, monitor post-launch performance, and iterate based on real-world usage data.",
-    icon: "🚀",
+    desc: "CI/CD deploys, post-launch monitoring and iteration on real usage.",
   },
 ];
 
-const Process = () => {
-  const sectionRef = useRef(null);
-  const stepsRef = useRef([]);
-
-  useEffect(() => {
-    gsap.fromTo(
-      stepsRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.65,
-        ease: "power3.out",
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  }, []);
-
-  return (
-    <section ref={sectionRef} id="process" className="bg-[#080808] text-white w-full py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-[#ff6600] text-sm font-semibold tracking-widest uppercase mb-3">How I Work</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Development <span className="text-[#ff6600]">Process</span>
-          </h2>
-          <p className="text-gray-400 font-outfit max-w-xl mx-auto text-lg">
-            A structured approach that turns business goals into shipped software.
-          </p>
+const Process = () => (
+  <section id="process" className="section">
+    <div className="shell">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p className="eyebrow">Process</p>
+          <h2 className="h-section mt-4">How the work happens</h2>
         </div>
-
-        {/* Steps — horizontal on desktop, vertical on mobile */}
-        <div className="relative">
-          {/* Connector line (desktop) */}
-          <div className="hidden md:block absolute top-[2.75rem] left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
-
-          <div className="grid md:grid-cols-5 gap-6 md:gap-4">
-            {steps.map((step, i) => (
-              <div
-                key={i}
-                ref={(el) => (stepsRef.current[i] = el)}
-                className="relative flex flex-col items-center text-center md:items-center"
-              >
-                {/* Circle with number */}
-                <div className="relative z-10 w-14 h-14 rounded-full bg-[#1a1a1a] border-2 border-[#ff6600]/40 flex items-center justify-center mb-5 text-xl group-hover:border-[#ff6600] transition-colors shrink-0">
-                  <span>{step.icon}</span>
-                </div>
-
-                <div className="text-xs font-mono text-[#ff6600]/60 mb-1 tracking-wider">{step.num}</div>
-                <h3 className="text-base font-bold mb-2">{step.title}</h3>
-                <p className="text-gray-500 text-sm font-outfit leading-relaxed">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <p className="lede lg:max-w-sm">
+          Five stages, one predictable rhythm. You always know what is being built and what ships next.
+        </p>
       </div>
-    </section>
-  );
-};
+
+      <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--line)] md:grid-cols-5">
+        {steps.map(({ num, icon: Icon, title, desc }) => (
+          <li key={num} className="group bg-[#060607] p-6 transition-colors duration-300 hover:bg-[var(--surface)]">
+            <div className="flex items-center justify-between">
+              <span className="meta mono">{num}</span>
+              <Icon size={18} className="text-[var(--dim)] transition-colors group-hover:text-[var(--accent)]" />
+            </div>
+            <h3 className="mt-8 text-[15px] font-medium tracking-tight text-white">{title}</h3>
+            <p className="mt-2 text-[13px] leading-relaxed text-[var(--muted)]">{desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
 
 export default Process;
